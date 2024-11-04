@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  petition-bot:
+    image: node:latest
+    container_name: petition-bot
+    working_dir: /app
+    volumes:
+      - ./src:/app
+      - db_data:/db
+    command: "npm start"
+
+volumes:
+  db_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./db
